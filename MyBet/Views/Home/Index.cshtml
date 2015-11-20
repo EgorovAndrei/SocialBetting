@@ -1,0 +1,20 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+
+<input type="button" value="Add new Bet" onclick="location.href='@Url.Action("CreateBet", "Bet")'" />
+
+<input type="button" value="Truncate all tables" onclick="location.href='@Url.Action("TruncateAllTables", "Home")'" />
+
+<h3>List of Bets</h3>
+<div>
+    @if (ViewBag.ListOfBetLinks != null)
+    {
+        foreach (var betInf in ViewBag.ListOfBetLinks)
+        {
+            <br />
+            <a href=@Url.Action("Index", "Bet", new { id = @betInf.Split('|')[1] })> @betInf.Split('|')[0] </a>
+        }
+    }
+</div>
+

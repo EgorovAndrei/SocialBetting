@@ -1,0 +1,48 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 11, 8.5" name="BetsDB">
+  <DataContextMoniker Name="/BetsDBDataContext" />
+  <nestedChildShapes>
+    <classShape Id="3dd17b38-cb11-419c-8a30-62a39db16604" absoluteBounds="0.75, 0.75, 2, 1.3862939453125">
+      <DataClassMoniker Name="/BetsDBDataContext/Outcome" />
+      <nestedChildShapes>
+        <elementListCompartment Id="180c59a3-0744-4abc-a389-a222ed698f61" absoluteBounds="0.765, 1.21, 1.9700000000000002, 0.8262939453125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="c1e0dc8e-b5ae-4111-9e0a-b926c8c06eac" absoluteBounds="3.75, 0.75, 2, 1.3862939453125">
+      <DataClassMoniker Name="/BetsDBDataContext/BindOutcomeFile" />
+      <nestedChildShapes>
+        <elementListCompartment Id="009c6cc0-8120-44fe-b92d-c527fe7f45b3" absoluteBounds="3.765, 1.21, 1.9700000000000002, 0.8262939453125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="86364f58-15ee-41aa-96e1-64e34a203b29" absoluteBounds="0.75, 3.75, 2, 1.3862939453125005">
+      <DataClassMoniker Name="/BetsDBDataContext/OutcomeFile" />
+      <nestedChildShapes>
+        <elementListCompartment Id="57214c14-288c-47aa-b33c-0ea2f7e3aa5e" absoluteBounds="0.765, 4.21, 1.9700000000000002, 0.8262939453125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="4682fc75-4582-4d41-ae56-1ab29cbe79bc" absoluteBounds="3.75, 3.75, 2, 1.3862939453125005">
+      <DataClassMoniker Name="/BetsDBDataContext/BindBetOutcome" />
+      <nestedChildShapes>
+        <elementListCompartment Id="3a6105e3-6061-425f-98d4-d787dd4e0093" absoluteBounds="3.765, 4.21, 1.9700000000000002, 0.8262939453125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="19cb9f64-dc42-4938-904a-d4702f720375" absoluteBounds="6.75, 0.75, 2, 1.3862939453125003">
+      <DataClassMoniker Name="/BetsDBDataContext/BindBetFile" />
+      <nestedChildShapes>
+        <elementListCompartment Id="283d2ade-8023-4a94-b90e-bfbcce50e030" absoluteBounds="6.765, 1.21, 1.9700000000000002, 0.8262939453125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="17d98f59-6722-4759-9535-acf3786a8d49" absoluteBounds="0.75, 6.75, 2, 1.3862939453125005">
+      <DataClassMoniker Name="/BetsDBDataContext/Bet" />
+      <nestedChildShapes>
+        <elementListCompartment Id="dcf05269-7aeb-4fd3-bfb2-4e610f92df9b" absoluteBounds="0.765, 7.21, 1.9700000000000002, 0.8262939453125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="a2960b64-50c0-474a-9504-ef40e2ce2dd1" absoluteBounds="6.75, 3.75, 2, 1.3862939453125005">
+      <DataClassMoniker Name="/BetsDBDataContext/BetFile" />
+      <nestedChildShapes>
+        <elementListCompartment Id="27f357e7-ecc3-48d0-8b9a-7af0bbb07072" absoluteBounds="6.765, 4.21, 1.9700000000000002, 0.8262939453125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+  </nestedChildShapes>
+</ordesignerObjectsDiagram>

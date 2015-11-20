@@ -1,0 +1,137 @@
+﻿@model SocialBetting.Models.MyOutcomeModel
+
+@{
+    ViewBag.Title = "Bet";
+}
+
+<h2>Bet</h2>
+
+@using (Html.BeginForm("CreateBet", "Bet", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>MyOutcomeModel</legend>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Name)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Name)
+            @Html.ValidationMessageFor(model => model.Name)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Description)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Description)
+            @Html.ValidationMessageFor(model => model.Description)
+        </div>
+
+        <label for="file">Filename:</label>
+        <input type="file" name="file" id="txtUploadFile" />
+
+        <label for="file">Uploaded files:</label> 
+        <div id="listOfFiles">
+        </div>
+
+
+        <p>
+            <input type="submit" value="Create" />
+        </p>
+    </fieldset>
+}
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+
+<script>
+    var namesOfFiles = new Array()
+
+    $(document).ready(function () {
+        
+        //download files
+        $('#txtUploadFile').on('change', function (e) {
+            
+            var files = e.target.files;
+            if (files.length > 0) {
+                if (window.FormData !== undefined) {
+                    var data = new FormData();
+                    for (var x = 0; x < files.length; x++) {
+                        data.append("file" + x, files[x]);
+                    }
+
+                    $.ajax({
+                        type: "POST",
+                        url: '/Bet/UploadFileForBet?id=3',
+                        contentType: false,
+                        processData: false,
+                        data: data,
+                        success: function (result) {                            
+                            for (var x = 0; x < files.length; x++) {
+                                namesOfFiles.push(files[x].name)
+
+                                $("#listOfFiles").html($("#listOfFiles").html() + "<br/>" + files[x].name + "   <input class='delButton' id='"+files[x].name+"' type='button' value='Delete' />");
+                            }
+
+                            //delete file
+                            $('.delButton').on('click', function (e) {
+                                alert(e.target.id)
+                                delFile(e.target.id)
+                            });
+                        },
+                        error: function (xhr, status, p3, p4) {
+                            var err = "Error " + " " + status + " " + p3 + " " + p4;
+                            if (xhr.responseText && xhr.responseText[0] == "{")
+                                err = JSON.parse(xhr.responseText).Message;
+                            alert(err);
+                        }
+                    });
+                } else {
+                    alert("This browser doesn't support HTML5 file uploads!");
+                }
+            }
+        });
+
+    });
+
+    function delFile(idFile)
+    { 
+        $.ajax({
+            type: "POST",
+            url: '/Bet/DeleteFile', 
+            dataType: 'json',
+            contentType: 'application/json',
+            data: JSON.stringify({ 'id': idFile }),
+            success: function (result) { 
+                namesOfFiles = jQuery.grep(namesOfFiles, function (value) {
+                    return value != idFile;
+                });
+                $("#listOfFiles").html('')
+                for (var x = 0; x < namesOfFiles.length; x++) {
+                    $("#listOfFiles").html($("#listOfFiles").html() + "<br/>" + namesOfFiles[x] + "   <input class='delButton' id='" + namesOfFiles[x] + "' type='button' value='Delete' />");
+
+                    //delete file
+                    $('.delButton').on('click', function (e) {
+                         
+                        delFile(e.target.id)
+                    });
+                }
+
+            },
+            error: function (xhr, status, p3, p4) {
+                var err = "Error " + " " + status + " " + p3 + " " + p4;
+                if (xhr.responseText && xhr.responseText[0] == "{")
+                    err = JSON.parse(xhr.responseText).Message;
+                alert(err);
+            }
+        }); 
+
+    }
+</script>
+}
+
+
